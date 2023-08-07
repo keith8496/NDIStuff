@@ -44,13 +44,13 @@ PROJECTS := \
 
 .PHONY: all
 all:
-	@if [ ! -f ../../lib/libndi.so ] && [ ! -f ../../lib/$(NDILIB)/libndi.so ]; then \
+	@if [ ! -f ../lib/libndi.so ] && [ ! -f ../lib/$(NDILIB)/libndi.so ]; then \
 		echo libndi.so not found: $(NDILIB) >&2; \
 		false; \
 	fi
 	-@for proj in $(PROJECTS); do \
 		if [ -d $$proj ]; then \
-			if [ -f ../../lib/libndi.so ]; then \
+			if [ -f ../lib/libndi.so ]; then \
 				$(MAKE) -C $$proj -f ../Makefile.proj NDILIB=; \
 			else \
 				$(MAKE) -C $$proj -f ../Makefile.proj NDILIB=$(NDILIB); \
